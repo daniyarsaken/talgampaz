@@ -6,167 +6,89 @@
 <title>Қазақ туыстық ағашы — Дерево родства казахов</title>
 <style>
   :root {
-    --bg: #f4efe6;
-    --bg-grad-1: #faf6ee;
-    --bg-grad-2: #ece3d2;
-    --panel: #fffdf8;
-    --panel-2: #f7f1e6;
-    --ink: #2c2418;
-    --ink-soft: #6b5d47;
-    --line: #d8cbb2;
-    --accent: #9c6b2f;
-    --accent-soft: #c79a5e;
-    --accent-ink: #5c3d15;
-    --me: #2f7d5b;
-    --me-soft: #d3ecdf;
-    --stage-bg: #efe7d7;
-    --shadow: 0 6px 22px rgba(60, 44, 20, 0.10);
-    --shadow-lg: 0 14px 40px rgba(60, 44, 20, 0.16);
-    --radius: 16px;
+    --bg: #f4efe6; --bg-grad-1: #faf6ee; --bg-grad-2: #ece3d2;
+    --panel: #fffdf8; --panel-2: #f7f1e6; --ink: #2c2418; --ink-soft: #6b5d47;
+    --line: #d8cbb2; --accent: #9c6b2f; --accent-soft: #c79a5e; --accent-ink: #5c3d15;
+    --me: #2f7d5b; --me-soft: #d3ecdf; --stage-bg: #efe7d7;
+    --shadow: 0 6px 22px rgba(60, 44, 20, 0.10); --shadow-lg: 0 14px 40px rgba(60, 44, 20, 0.16); --radius: 16px;
   }
   :root[data-theme="dark"] {
-    --bg: #16130e;
-    --bg-grad-1: #1c1811;
-    --bg-grad-2: #100d09;
-    --panel: #221d15;
-    --panel-2: #2b241a;
-    --ink: #f2e9d8;
-    --ink-soft: #b7a888;
-    --line: #3d3425;
-    --accent: #d8a860;
-    --accent-soft: #a67c3e;
-    --accent-ink: #f4dcae;
-    --me: #5fd39c;
-    --me-soft: #1e3a2c;
-    --stage-bg: #171308;
-    --shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.5);
+    --bg: #16130e; --bg-grad-1: #1c1811; --bg-grad-2: #100d09;
+    --panel: #221d15; --panel-2: #2b241a; --ink: #f2e9d8; --ink-soft: #b7a888;
+    --line: #3d3425; --accent: #d8a860; --accent-soft: #a67c3e; --accent-ink: #f4dcae;
+    --me: #5fd39c; --me-soft: #1e3a2c; --stage-bg: #171308;
+    --shadow: 0 6px 22px rgba(0, 0, 0, 0.35); --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.5);
   }
-
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
-    font-family: "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    color: var(--ink);
-    background:
-      radial-gradient(1200px 600px at 15% -10%, var(--bg-grad-1), transparent 60%),
-      radial-gradient(1000px 700px at 100% 0%, var(--bg-grad-2), transparent 55%),
-      var(--bg);
-    min-height: 100vh;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    transition: background 0.3s, color 0.3s;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif; color: var(--ink);
+    background: radial-gradient(1200px 600px at 15% -10%, var(--bg-grad-1), transparent 60%),
+      radial-gradient(1000px 700px at 100% 0%, var(--bg-grad-2), transparent 55%), var(--bg);
+    min-height: 100vh; line-height: 1.55; -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s;
   }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 18px 60px; }
 
-  /* ---------- Header ---------- */
   header.top { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px; margin-bottom: 16px; }
   .brand { flex: 1 1 340px; min-width: 240px; }
   .ornament { font-size: 12.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
   h1 { font-size: clamp(26px, 4.6vw, 42px); margin: 0 0 4px; line-height: 1.08; letter-spacing: -0.5px; }
   h1 .ru { display: block; font-size: 0.44em; color: var(--ink-soft); font-weight: 500; letter-spacing: 0; margin-top: 4px; }
-  .lede { color: var(--ink-soft); font-size: 14.5px; max-width: 640px; margin: 8px 0 0; }
+  .lede { color: var(--ink-soft); font-size: 14.5px; max-width: 660px; margin: 8px 0 0; }
   .lede b { color: var(--accent-ink); }
 
   .controls { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
   .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-  .theme-btn {
-    border: 1px solid var(--line); background: var(--panel); color: var(--ink);
-    border-radius: 999px; padding: 9px 15px; cursor: pointer; font-size: 14px;
-    font-weight: 600; box-shadow: var(--shadow); transition: transform 0.12s, background 0.2s; white-space: nowrap;
-  }
+  .theme-btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 9px 15px; cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: var(--shadow); transition: transform 0.12s, background 0.2s; white-space: nowrap; }
   .theme-btn:hover { transform: translateY(-1px); }
-
   .segment { display: inline-flex; background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px; box-shadow: var(--shadow); }
-  .segment button {
-    border: none; background: transparent; color: var(--ink-soft); font-weight: 700;
-    font-size: 14px; padding: 7px 16px; border-radius: 999px; cursor: pointer; transition: 0.18s; white-space: nowrap;
-  }
+  .segment button { border: none; background: transparent; color: var(--ink-soft); font-weight: 700; font-size: 14px; padding: 7px 16px; border-radius: 999px; cursor: pointer; transition: 0.18s; white-space: nowrap; }
   .segment button.active { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
-
   .search { position: relative; }
-  .search input {
-    width: 250px; max-width: 62vw; padding: 10px 14px 10px 38px; border-radius: 999px;
-    border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-size: 14px; box-shadow: var(--shadow); outline: none;
-  }
+  .search input { width: 250px; max-width: 62vw; padding: 10px 14px 10px 38px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-size: 14px; box-shadow: var(--shadow); outline: none; }
   .search input:focus { border-color: var(--accent-soft); }
   .search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
-
   .meta-row { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 16px; }
   .chip { font-size: 12.5px; font-weight: 600; color: var(--accent-ink); background: var(--panel-2); border: 1px solid var(--line); padding: 5px 12px; border-radius: 999px; }
 
-  /* ---------- TREE (mind-map) ---------- */
+  /* TREE */
   #treeWrap { position: relative; }
-  #stage {
-    position: relative; width: 100%; height: 72vh; min-height: 460px;
-    border: 1px solid var(--line); border-radius: var(--radius);
-    background:
-      radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--me-soft) 40%, transparent), transparent 60%),
-      var(--stage-bg);
-    overflow: hidden; touch-action: none; cursor: grab; box-shadow: var(--shadow);
-  }
+  #stage { position: relative; width: 100%; height: 74vh; min-height: 480px; border: 1px solid var(--line); border-radius: var(--radius);
+    background: radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--me-soft) 40%, transparent), transparent 60%), var(--stage-bg);
+    overflow: hidden; touch-action: none; cursor: grab; box-shadow: var(--shadow); }
   #stage.grabbing { cursor: grabbing; }
-  #world { position: absolute; left: 0; top: 0; width: 3200px; height: 2600px; transform-origin: 0 0; }
-  #edges { position: absolute; left: 0; top: 0; width: 3200px; height: 2600px; pointer-events: none; overflow: visible; }
+  #world { position: absolute; left: 0; top: 0; width: 3400px; height: 2800px; transform-origin: 0 0; }
+  #edges { position: absolute; left: 0; top: 0; width: 3400px; height: 2800px; pointer-events: none; overflow: visible; }
 
-  .node {
-    position: absolute; transform: translate(-50%, -50%);
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    border-radius: 13px; cursor: pointer; user-select: none;
-    transition: opacity 0.35s ease, box-shadow 0.18s, filter 0.18s;
-    will-change: left, top;
-  }
+  .node { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; text-align: center;
+    border-radius: 13px; cursor: pointer; user-select: none; transition: opacity 0.4s ease, box-shadow 0.18s, filter 0.18s; will-change: left, top; }
   .node .inner { transition: transform 0.16s; display: flex; flex-direction: column; align-items: center; }
   .node:hover .inner { transform: scale(1.06); }
-
-  .node.me {
-    width: 128px; height: 128px; border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, color-mix(in srgb, var(--me) 30%, var(--panel)), var(--panel));
-    border: 3px solid var(--me); box-shadow: var(--shadow-lg); z-index: 5;
-  }
-  .node.me .k { font-size: 27px; font-weight: 800; color: var(--me); letter-spacing: 1px; }
+  .node.me { width: 122px; height: 122px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, color-mix(in srgb, var(--me) 30%, var(--panel)), var(--panel)); border: 3px solid var(--me); box-shadow: var(--shadow-lg); z-index: 6; }
+  .node.me .k { font-size: 26px; font-weight: 800; color: var(--me); letter-spacing: 1px; }
   .node.me .s { font-size: 11px; color: var(--ink-soft); font-weight: 600; margin-top: 1px; }
-
-  .node.branch {
-    min-width: 118px; max-width: 150px; padding: 12px 15px;
-    background: var(--panel); border: 2px solid var(--bcolor, var(--accent)); box-shadow: var(--shadow); z-index: 4;
-  }
+  .node.branch { min-width: 116px; max-width: 152px; padding: 12px 15px; background: var(--panel); border: 2px solid var(--bcolor, var(--accent)); box-shadow: var(--shadow); z-index: 4; }
   .node.branch .lab { font-size: 15px; font-weight: 800; color: var(--ink); white-space: pre-line; line-height: 1.15; }
   .node.branch .cnt { margin-top: 4px; font-size: 11px; font-weight: 700; color: #fff; background: var(--bcolor, var(--accent)); padding: 1px 8px; border-radius: 999px; }
+  .node.branch.sub { min-width: 96px; max-width: 142px; padding: 9px 12px; z-index: 5; }
+  .node.branch.sub .lab { font-size: 13px; }
+  .node.branch.sub .cnt { font-size: 10px; }
   .node.branch.active { box-shadow: 0 0 0 4px color-mix(in srgb, var(--bcolor) 30%, transparent), var(--shadow-lg); }
-  .node.dim { opacity: 0.34; }
-
-  .node.leaf {
-    min-width: 96px; max-width: 168px; padding: 8px 12px;
-    background: var(--panel-2); border: 1px solid var(--line);
-    border-left: 4px solid var(--bcolor, var(--accent)); box-shadow: var(--shadow); z-index: 3;
-  }
+  .node.dim { opacity: 0.32; }
+  .node.leaf { min-width: 92px; max-width: 172px; padding: 8px 12px; background: var(--panel-2); border: 1px solid var(--line); border-left: 4px solid var(--bcolor, var(--accent)); box-shadow: var(--shadow); z-index: 3; }
   .node.leaf .term { font-size: 13.5px; font-weight: 700; color: var(--ink); line-height: 1.15; }
   .node.leaf .gl { font-size: 11px; color: var(--ink-soft); margin-top: 1px; }
-  .node.leaf.hidden { opacity: 0; pointer-events: none; }
+  .node.hidden { opacity: 0; pointer-events: none; }
   .node.leaf.hl { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 40%, transparent), var(--shadow); }
-  .node.leaf.sel { border-color: var(--bcolor); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bcolor) 45%, transparent), var(--shadow-lg); }
+  .node.leaf.sel { box-shadow: 0 0 0 3px color-mix(in srgb, var(--bcolor) 45%, transparent), var(--shadow-lg); }
 
   .zoombar { position: absolute; right: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 6px; z-index: 20; }
-  .zoombar button {
-    width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line);
-    background: var(--panel); color: var(--ink); font-size: 18px; font-weight: 700; cursor: pointer;
-    box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center;
-  }
+  .zoombar button { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; }
   .zoombar button:hover { border-color: var(--accent-soft); }
-  .hint {
-    position: absolute; left: 12px; top: 12px; z-index: 20; font-size: 12px; color: var(--ink-soft);
-    background: color-mix(in srgb, var(--panel) 80%, transparent); border: 1px solid var(--line);
-    padding: 6px 11px; border-radius: 999px; pointer-events: none; backdrop-filter: blur(3px);
-  }
+  .hint { position: absolute; left: 12px; top: 12px; z-index: 20; font-size: 12px; color: var(--ink-soft); background: color-mix(in srgb, var(--panel) 80%, transparent); border: 1px solid var(--line); padding: 6px 11px; border-radius: 999px; pointer-events: none; backdrop-filter: blur(3px); }
 
-  /* ---------- Detail panel ---------- */
-  #panel {
-    position: fixed; top: 0; right: 0; height: 100%; width: 340px; max-width: 88vw;
-    background: var(--panel); border-left: 1px solid var(--line); box-shadow: var(--shadow-lg);
-    transform: translateX(102%); transition: transform 0.3s cubic-bezier(.4,0,.2,1); z-index: 60;
-    padding: 22px 22px 30px; overflow-y: auto;
-  }
+  /* Panel */
+  #panel { position: fixed; top: 0; right: 0; height: 100%; width: 340px; max-width: 88vw; background: var(--panel); border-left: 1px solid var(--line); box-shadow: var(--shadow-lg); transform: translateX(102%); transition: transform 0.3s cubic-bezier(.4,0,.2,1); z-index: 60; padding: 22px 22px 30px; overflow-y: auto; }
   #panel.open { transform: translateX(0); }
   #panel .close { position: absolute; top: 14px; right: 16px; border: none; background: var(--panel-2); color: var(--ink); width: 34px; height: 34px; border-radius: 50%; font-size: 18px; cursor: pointer; }
   #panel .p-tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; padding: 3px 10px; border-radius: 6px; margin-bottom: 14px; }
@@ -175,19 +97,24 @@
   #panel .p-gloss { font-size: 16px; color: var(--ink-soft); margin: 12px 0 0; }
   #panel .p-meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
   #panel .p-meta span { font-size: 12px; font-weight: 600; background: var(--panel-2); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; color: var(--accent-ink); }
+  #panel .p-path { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 2px; }
   #panel .p-desc { font-size: 15px; margin-top: 10px; padding-top: 14px; border-top: 1px dashed var(--line); }
   #backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.28); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 55; }
   #backdrop.show { opacity: 1; pointer-events: auto; }
 
-  /* ---------- LIST view (reused cards) ---------- */
+  /* List */
   #listView { display: none; }
-  section.branch-sec { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 20px 8px; margin-bottom: 20px; box-shadow: var(--shadow); }
+  section.branch-sec { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 20px 12px; margin-bottom: 20px; box-shadow: var(--shadow); }
   .branch-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
   .branch-head h2 { font-size: 20px; margin: 0; display: flex; align-items: center; gap: 9px; }
   .branch-head .dir { font-size: 13px; color: var(--ink-soft); }
   .branch-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; padding: 3px 9px; border-radius: 6px; }
-  .branch-note { font-size: 13.5px; color: var(--ink-soft); margin: 2px 0 14px; }
+  .branch-note { font-size: 13.5px; color: var(--ink-soft); margin: 2px 0 8px; }
   .branch-note.warn { background: var(--panel-2); border-left: 3px solid var(--accent-soft); padding: 8px 12px; border-radius: 8px; }
+  .subgroup { margin-top: 6px; }
+  .subhead { display: flex; align-items: center; gap: 8px; margin: 16px 2px 9px; font-size: 15.5px; font-weight: 800; color: var(--ink); }
+  .subhead .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+  .subhead .sc { font-size: 11px; font-weight: 700; color: var(--ink-soft); }
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
   .card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; cursor: pointer; transition: transform 0.14s, box-shadow 0.14s, border-color 0.14s; position: relative; }
   .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--accent-soft); }
@@ -210,7 +137,7 @@
     .search input { width: 100%; max-width: none; }
     header.top { flex-direction: column; }
     #stage { height: 66vh; }
-    #panel { top: auto; bottom: 0; right: 0; left: 0; width: 100%; max-width: 100%; height: auto; max-height: 76%; border-left: none; border-top: 1px solid var(--line); border-radius: 18px 18px 0 0; transform: translateY(102%); }
+    #panel { top: auto; bottom: 0; right: 0; left: 0; width: 100%; max-width: 100%; height: auto; max-height: 78%; border-left: none; border-top: 1px solid var(--line); border-radius: 18px 18px 0 0; transform: translateY(102%); }
     #panel.open { transform: translateY(0); }
     .cards { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   }
@@ -218,16 +145,15 @@
 </head>
 <body>
 <div class="wrap">
-
   <header class="top">
     <div class="brand">
       <div class="ornament">◆ Шежіре ◆ Туыстық жүйе</div>
       <h1>Қазақ туыстық ағашы<span class="ru">Дерево родственных связей казахов</span></h1>
       <p class="lede">
-        Ортада — <b>«Мен»</b>. Айналасында 8 тармақ: тармаққа
-        <b>басыңыз</b> — туыстық атаулары желпіш болып ашылады. Атауға
-        басыңыз — түсініктеме шығады. Тінтуірмен сүйреп жылжытуға, дөңгелекпен
-        (немесе саусақпен) үлкейтуге болады.
+        Ортада — <b>«Мен»</b>. Тармаққа <b>басыңыз</b> — ішкі топтар ашылады
+        (мыс. <b>Ата-ана → Әке жағы / Ана жағы</b>), әрі қарай басқанда
+        атаулар шығады. Атауға басыңыз — түсініктеме. Сүйреп жылжытуға,
+        дөңгелекпен/саусақпен масштабтауға болады.
       </p>
     </div>
     <div class="controls">
@@ -247,26 +173,19 @@
 
   <div class="meta-row" id="metaRow"></div>
 
-  <!-- TREE VIEW -->
   <div id="treeWrap">
     <div id="stage">
-      <div class="hint">Сүйреңіз · дөңгелекпен масштаб · тармаққа басыңыз</div>
-      <div id="world">
-        <svg id="edges"></svg>
-      </div>
+      <div class="hint">Сүйреңіз · масштаб дөңгелекпен · тармаққа басыңыз</div>
+      <div id="world"><svg id="edges"></svg></div>
       <div class="zoombar">
         <button id="zin" title="Үлкейту">+</button>
         <button id="zout" title="Кішірейту">−</button>
-        <button id="zfit" title="Ортаға" style="font-size:15px">⤢</button>
+        <button id="zfit" title="Бәрін көрсету">⤢</button>
       </div>
     </div>
   </div>
 
-  <!-- LIST VIEW -->
-  <div id="listView">
-    <main id="tree"></main>
-    <div class="empty" id="empty">Ештеңе табылмады. Басқа сөзбен іздеп көріңіз.</div>
-  </div>
+  <div id="listView"><main id="listRoot"></main><div class="empty" id="empty">Ештеңе табылмады. Басқа сөзбен іздеп көріңіз.</div></div>
 
   <footer>
     <p><b>Ескерту.</b> Туыстық атаулар өңірге және дереккөзге қарай аздап
@@ -280,6 +199,7 @@
 <aside id="panel" aria-hidden="true">
   <button class="close" id="pClose">×</button>
   <span class="p-tag" id="pTag"></span>
+  <div class="p-path" id="pPath"></div>
   <h2 class="p-term" id="pTerm"></h2>
   <div class="p-tr" id="pTr"></div>
   <div class="p-gloss" id="pGloss"></div>
@@ -288,100 +208,123 @@
 </aside>
 
 <script>
-/* ============================ DATA ============================ */
+/* ============================ DATA (иерархия) ============================ */
 const BRANCHES = [
-  { id:"orleu", title:"Өрлеу — жеті ата", label:"Өрлеу\n(жеті ата)", tag:"Жоғары", dir:"предки ↑", hue:28,
-    note:"«Жеті атасын білу» — жеті буын ата-бабасын жатқа білу дәстүрі. Тізімнің соңғы буындары әр дереккөзде сәл өзгешелеу аталады.", warn:true,
-    terms:[
-      { term:"Әке", tr:"áke", gloss:"отец", gen:1, desc:"1-буын. Сені дүниеге әкелген еркек — тікелей туған атаң." },
-      { term:"Ата", tr:"ata", gloss:"дед", gen:2, desc:"2-буын. Әкеңнің әкесі. Қазақта ата — рудың, әулеттің тірегі." },
-      { term:"Баба (Арғы ата)", tr:"baba", gloss:"прадед", gen:3, desc:"3-буын. Атаңның әкесі. «Арғы ата» деп те атайды." },
-      { term:"Түп ата", tr:"túp ata", gloss:"прапрадед", gen:4, desc:"4-буын. Бабаңның әкесі — әулеттің түп-тамыры." },
-      { term:"Тек ата", tr:"tek ata", gloss:"5-е колено", gen:5, desc:"5-буын. Түп атаңның әкесі (кей дереккөзде «ата тек»)." },
-      { term:"Ата тек", tr:"ata tek", gloss:"6-е колено", gen:6, desc:"6-буын. Ру-тектің арғы бастауына жақын буын." },
-      { term:"Баба тек", tr:"baba tek", gloss:"7-е колено", gen:7, desc:"7-буын. Жеті атаның ең соңғы, түпкі буыны." }
+  { id:"orleu", label:"Өрлеу", tag:"Жоғары", dir:"предки ↑", hue:28, warn:true,
+    note:"«Жеті атасын білу» — жеті буын ата-бабасын жатқа білу дәстүрі. Тізімнің соңғы буындары әр дереккөзде сәл өзгешелеу аталады.",
+    children:[
+      { label:"Жақын ата-баба", children:[
+        { term:"Әке", tr:"áke", gloss:"отец", gen:1, desc:"1-буын. Сені дүниеге әкелген еркек — тікелей туған атаң." },
+        { term:"Ата", tr:"ata", gloss:"дед", gen:2, desc:"2-буын. Әкеңнің әкесі. Қазақта ата — рудың, әулеттің тірегі." },
+        { term:"Баба (Арғы ата)", tr:"baba", gloss:"прадед", gen:3, desc:"3-буын. Атаңның әкесі. «Арғы ата» деп те атайды." } ]},
+      { label:"Арғы ата-баба", children:[
+        { term:"Түп ата", tr:"túp ata", gloss:"прапрадед", gen:4, desc:"4-буын. Бабаңның әкесі — әулеттің түп-тамыры." },
+        { term:"Тек ата", tr:"tek ata", gloss:"5-е колено", gen:5, desc:"5-буын. Түп атаңның әкесі (кей дереккөзде «ата тек»)." },
+        { term:"Ата тек", tr:"ata tek", gloss:"6-е колено", gen:6, desc:"6-буын. Ру-тектің арғы бастауына жақын буын." },
+        { term:"Баба тек", tr:"baba tek", gloss:"7-е колено", gen:7, desc:"7-буын. Жеті атаның ең соңғы, түпкі буыны." } ]}
     ]},
-  { id:"urpaq", title:"Ұрпақ — жеті буын", label:"Ұрпақ", tag:"Төмен", dir:"потомки ↓", hue:145,
+  { id:"urpaq", label:"Ұрпақ", tag:"Төмен", dir:"потомки ↓", hue:145,
     note:"«Менен» тарайтын жеті буын ұрпақ: әр буынның өз атауы бар.",
-    terms:[
-      { term:"Бала", tr:"bala", gloss:"сын / дочь", gen:1, desc:"1-буын. Өз перзентің — ұл (сын) не қыз (дочь)." },
-      { term:"Немере", tr:"nemere", gloss:"внук / внучка", gen:2, desc:"2-буын. Балаңның баласы." },
-      { term:"Шөбере", tr:"shóbere", gloss:"правнук", gen:3, desc:"3-буын. Немереңнің баласы." },
-      { term:"Шөпшек", tr:"shópshek", gloss:"праправнук", gen:4, desc:"4-буын. Шөбереңнің баласы." },
-      { term:"Немене", tr:"nemene", gloss:"5-е поколение", gen:5, desc:"5-буын. Шөпшектің баласы." },
-      { term:"Туажат", tr:"tuajat", gloss:"6-е поколение", gen:6, desc:"6-буын. Неменеңнің баласы — «тумай жат болған» ұрпақ." },
-      { term:"Жұрағат", tr:"juragat", gloss:"7-е поколение", gen:7, desc:"7-буын. Ең алыс ұрпақ буыны (кей жерде «жүрежат»)." }
+    children:[
+      { label:"Жақын ұрпақ", children:[
+        { term:"Бала", tr:"bala", gloss:"сын / дочь", gen:1, desc:"1-буын. Өз перзентің — ұл (сын) не қыз (дочь)." },
+        { term:"Немере", tr:"nemere", gloss:"внук / внучка", gen:2, desc:"2-буын. Балаңның баласы." },
+        { term:"Шөбере", tr:"shóbere", gloss:"правнук", gen:3, desc:"3-буын. Немереңнің баласы." } ]},
+      { label:"Алыс ұрпақ", children:[
+        { term:"Шөпшек", tr:"shópshek", gloss:"праправнук", gen:4, desc:"4-буын. Шөбереңнің баласы." },
+        { term:"Немене", tr:"nemene", gloss:"5-е поколение", gen:5, desc:"5-буын. Шөпшектің баласы." },
+        { term:"Туажат", tr:"tuajat", gloss:"6-е поколение", gen:6, desc:"6-буын. Неменеңнің баласы — «тумай жат болған» ұрпақ." },
+        { term:"Жұрағат", tr:"juragat", gloss:"7-е поколение", gen:7, desc:"7-буын. Ең алыс ұрпақ буыны (кей жерде «жүрежат»)." } ]}
     ]},
-  { id:"ata-ana", title:"Ата-ана және ата-әже", label:"Ата-ана", tag:"Түбір", dir:"родители и деды", hue:210,
+  { id:"ata-ana", label:"Ата-ана", tag:"Түбір", dir:"родители и деды", hue:210,
     note:"Тікелей ата-анаң және екі жақтың ата-әжелері.",
-    terms:[
-      { term:"Әке", tr:"áke", gloss:"отец", gen:1, desc:"Туған әкең." },
-      { term:"Ана (Шеше)", tr:"ana / sheshe", gloss:"мать", gen:1, desc:"Туған анаң. «Шеше», «апа» деп те атайды." },
-      { term:"Ата", tr:"ata", gloss:"дед по отцу", gen:2, desc:"Әкеңнің әкесі — өз жұртыңның атасы." },
-      { term:"Әже", tr:"áje", gloss:"бабушка по отцу", gen:2, desc:"Әкеңнің анасы. «Апа» деп те атайды." },
-      { term:"Нағашы ата", tr:"nagashy ata", gloss:"дед по матери", gen:2, desc:"Анаңның әкесі — нағашы жұртыңның атасы." },
-      { term:"Нағашы әже", tr:"nagashy áje", gloss:"бабушка по матери", gen:2, desc:"Анаңның анасы." }
+    children:[
+      { label:"Әке жағы", children:[
+        { term:"Әке", tr:"áke", gloss:"отец", gen:1, desc:"Туған әкең." },
+        { term:"Ата", tr:"ata", gloss:"дед по отцу", gen:2, desc:"Әкеңнің әкесі — өз жұртыңның атасы." },
+        { term:"Әже", tr:"áje", gloss:"бабушка по отцу", gen:2, desc:"Әкеңнің анасы. «Апа» деп те атайды." } ]},
+      { label:"Ана жағы", children:[
+        { term:"Ана (Шеше)", tr:"ana / sheshe", gloss:"мать", gen:1, desc:"Туған анаң. «Шеше», «апа» деп те атайды." },
+        { term:"Нағашы ата", tr:"nagashy ata", gloss:"дед по матери", gen:2, desc:"Анаңның әкесі — нағашы жұртыңның атасы." },
+        { term:"Нағашы әже", tr:"nagashy áje", gloss:"бабушка по матери", gen:2, desc:"Анаңның анасы." } ]}
     ]},
-  { id:"bauyr", title:"Бауырлар", label:"Бауырлар", tag:"Қатар", dir:"братья и сёстры", hue:275,
+  { id:"bauyr", label:"Бауырлар", tag:"Қатар", dir:"братья и сёстры", hue:275,
     note:"Ағайынды бауырлар. Қазақта жасы мен жынысына қарай бөлек атау беріледі.",
-    terms:[
-      { term:"Аға", tr:"aga", gloss:"старший брат", gen:0, desc:"Өзіңнен үлкен ер бауырың." },
-      { term:"Іні", tr:"ini", gloss:"младший брат", gen:0, desc:"Өзіңнен кіші ер бауырың." },
-      { term:"Апа (Әпке)", tr:"apa / ápke", gloss:"старшая сестра", gen:0, desc:"Өзіңнен үлкен қыз бауырың." },
-      { term:"Қарындас", tr:"qaryndas", gloss:"мл. сестра (говорит мужчина)", gen:0, desc:"Ер адамның өзінен кіші қыз бауыры." },
-      { term:"Сіңлі", tr:"síńli", gloss:"мл. сестра (говорит женщина)", gen:0, desc:"Әйел адамның өзінен кіші қыз бауыры." },
-      { term:"Егіз", tr:"egiz", gloss:"близнец", gen:0, desc:"Бір анадан бір мезгілде туған бауыр." },
-      { term:"Жеңге", tr:"jeńge", gloss:"жена ст. брата", gen:0, desc:"Ағаңның әйелі. Үйге келін болып түскен жеңгең." },
-      { term:"Жезде", tr:"jezde", gloss:"муж ст. сестры", gen:0, desc:"Апаңның (әпкеңнің) күйеуі." },
-      { term:"Бауыр", tr:"bauyr", gloss:"родич, кровный", gen:0, desc:"Жалпы қандас туыс — «бір бауырдан жаралған»." }
+    children:[
+      { label:"Ер бауырлар", children:[
+        { term:"Аға", tr:"aga", gloss:"старший брат", gen:0, desc:"Өзіңнен үлкен ер бауырың." },
+        { term:"Іні", tr:"ini", gloss:"младший брат", gen:0, desc:"Өзіңнен кіші ер бауырың." } ]},
+      { label:"Қыз бауырлар", children:[
+        { term:"Апа (Әпке)", tr:"apa / ápke", gloss:"старшая сестра", gen:0, desc:"Өзіңнен үлкен қыз бауырың." },
+        { term:"Қарындас", tr:"qaryndas", gloss:"мл. сестра (говорит мужчина)", gen:0, desc:"Ер адамның өзінен кіші қыз бауыры." },
+        { term:"Сіңлі", tr:"síńli", gloss:"мл. сестра (говорит женщина)", gen:0, desc:"Әйел адамның өзінен кіші қыз бауыры." } ]},
+      { label:"Жеңге-жезде", children:[
+        { term:"Жеңге", tr:"jeńge", gloss:"жена ст. брата", gen:0, desc:"Ағаңның әйелі. Үйге келін болып түскен жеңгең." },
+        { term:"Жезде", tr:"jezde", gloss:"муж ст. сестры", gen:0, desc:"Апаңның (әпкеңнің) күйеуі." } ]},
+      { label:"Жалпы", children:[
+        { term:"Егіз", tr:"egiz", gloss:"близнец", gen:0, desc:"Бір анадан бір мезгілде туған бауыр." },
+        { term:"Бауыр", tr:"bauyr", gloss:"родич, кровный", gen:0, desc:"Жалпы қандас туыс — «бір бауырдан жаралған»." } ]}
     ]},
-  { id:"oz-jurt", title:"Әке жағы — өз жұрты", label:"Әке жағы", tag:"Қандас", dir:"родня по отцу", hue:340,
+  { id:"oz-jurt", label:"Әке жағы", tag:"Қандас", dir:"родня по отцу", hue:340,
     note:"Әкеңнің ағайын-туысы: аталас, бір атадан тарайтын қандастар.",
-    terms:[
-      { term:"Аға / Көке", tr:"aga / kóke", gloss:"дядя (ст. брат отца)", gen:1, desc:"Әкеңнің үлкен ағасы. «Көке» деп сыйлап атайды." },
-      { term:"Әке іні / Аға", tr:"áke ini", gloss:"дядя (мл. брат отца)", gen:1, desc:"Әкеңнің інісі — саған да аға." },
-      { term:"Тәте (Апа)", tr:"táte", gloss:"тётя (сестра отца)", gen:1, desc:"Әкеңнің қарындасы не апасы." },
-      { term:"Немере аға", tr:"nemere aga", gloss:"двоюродный ст. брат", gen:0, desc:"Әкеңнің аға-інісінің өзіңнен үлкен ұлы." },
-      { term:"Немере іні", tr:"nemere ini", gloss:"двоюродный мл. брат", gen:0, desc:"Әкеңнің аға-інісінің өзіңнен кіші ұлы." },
-      { term:"Немере апа / қарындас", tr:"nemere apa", gloss:"двоюродная сестра", gen:0, desc:"Әкеңнің аға-інісінің қызы." },
-      { term:"Аталас", tr:"atalas", gloss:"родня по общему деду", gen:0, desc:"Бір атадан тараған ағайын — «аталас туыс»." },
-      { term:"Немерелес", tr:"nemereles", gloss:"троюродная родня", gen:0, desc:"Бір бабадан тараған, немере деңгейіндегі ағайын." }
+    children:[
+      { label:"Әке буыны", children:[
+        { term:"Аға / Көке", tr:"aga / kóke", gloss:"дядя (ст. брат отца)", gen:1, desc:"Әкеңнің үлкен ағасы. «Көке» деп сыйлап атайды." },
+        { term:"Әке іні / Аға", tr:"áke ini", gloss:"дядя (мл. брат отца)", gen:1, desc:"Әкеңнің інісі — саған да аға." },
+        { term:"Тәте (Апа)", tr:"táte", gloss:"тётя (сестра отца)", gen:1, desc:"Әкеңнің қарындасы не апасы." } ]},
+      { label:"Немере ағайын", children:[
+        { term:"Немере аға", tr:"nemere aga", gloss:"двоюродный ст. брат", gen:0, desc:"Әкеңнің аға-інісінің өзіңнен үлкен ұлы." },
+        { term:"Немере іні", tr:"nemere ini", gloss:"двоюродный мл. брат", gen:0, desc:"Әкеңнің аға-інісінің өзіңнен кіші ұлы." },
+        { term:"Немере апа / қарындас", tr:"nemere apa", gloss:"двоюродная сестра", gen:0, desc:"Әкеңнің аға-інісінің қызы." } ]},
+      { label:"Аталас", children:[
+        { term:"Аталас", tr:"atalas", gloss:"родня по общему деду", gen:0, desc:"Бір атадан тараған ағайын — «аталас туыс»." },
+        { term:"Немерелес", tr:"nemereles", gloss:"троюродная родня", gen:0, desc:"Бір бабадан тараған, немере деңгейіндегі ағайын." } ]}
     ]},
-  { id:"nagashy", title:"Нағашы жұрт — ана жағы", label:"Нағашы жұрт", tag:"Нағашы", dir:"родня по матери", hue:190,
+  { id:"nagashy", label:"Нағашы жұрт", tag:"Нағашы", dir:"родня по матери", hue:190,
     note:"Анаңның руы — нағашы жұртың. «Нағашыға жиен ерке» деген сөз содан.",
-    terms:[
-      { term:"Нағашы", tr:"nagashy", gloss:"родня по матери", gen:0, desc:"Анаңның бүкіл ру-тегі, туыстары." },
-      { term:"Нағашы ата", tr:"nagashy ata", gloss:"дед по матери", gen:2, desc:"Анаңның әкесі." },
-      { term:"Нағашы әже", tr:"nagashy áje", gloss:"бабушка по матери", gen:2, desc:"Анаңның анасы." },
-      { term:"Нағашы аға", tr:"nagashy aga", gloss:"ст. дядя по матери", gen:1, desc:"Анаңның өзінен үлкен ер бауыры — нағашың." },
-      { term:"Нағашы іні", tr:"nagashy ini", gloss:"мл. дядя по матери", gen:1, desc:"Анаңның өзінен кіші ер бауыры." },
-      { term:"Нағашы әпке / апа", tr:"nagashy ápke", gloss:"ст. тётя по матери", gen:1, desc:"Анаңның өзінен үлкен қыз бауыры." },
-      { term:"Нағашы тәте", tr:"nagashy táte", gloss:"мл. тётя по матери", gen:1, desc:"Анаңның өзінен кіші қыз бауыры." },
-      { term:"Жиен", tr:"jien", gloss:"племянник (по сестре/дочери)", gen:-1, desc:"Апаңның не қызыңның баласы. Сен оған нағашы боласың." },
-      { term:"Жиеншар", tr:"jienshar", gloss:"внучатый племянник", gen:-2, desc:"Жиеніңнің баласы — нағашы жұрттан таралған ұрпақ." },
-      { term:"Бөле", tr:"bóle", gloss:"двоюродный (дети сестёр)", gen:0, desc:"Анаң мен оның апа-сіңлісінің балалары — өзара бөле." }
+    children:[
+      { label:"Жалпы", children:[
+        { term:"Нағашы", tr:"nagashy", gloss:"родня по матери", gen:0, desc:"Анаңның бүкіл ру-тегі, туыстары." } ]},
+      { label:"Нағашы ата-әже", children:[
+        { term:"Нағашы ата", tr:"nagashy ata", gloss:"дед по матери", gen:2, desc:"Анаңның әкесі." },
+        { term:"Нағашы әже", tr:"nagashy áje", gloss:"бабушка по матери", gen:2, desc:"Анаңның анасы." } ]},
+      { label:"Нағашы аға-апа", children:[
+        { term:"Нағашы аға", tr:"nagashy aga", gloss:"ст. дядя по матери", gen:1, desc:"Анаңның өзінен үлкен ер бауыры — нағашың." },
+        { term:"Нағашы іні", tr:"nagashy ini", gloss:"мл. дядя по матери", gen:1, desc:"Анаңның өзінен кіші ер бауыры." },
+        { term:"Нағашы әпке / апа", tr:"nagashy ápke", gloss:"ст. тётя по матери", gen:1, desc:"Анаңның өзінен үлкен қыз бауыры." },
+        { term:"Нағашы тәте", tr:"nagashy táte", gloss:"мл. тётя по матери", gen:1, desc:"Анаңның өзінен кіші қыз бауыры." } ]},
+      { label:"Жиен-бөле", children:[
+        { term:"Жиен", tr:"jien", gloss:"племянник (по сестре/дочери)", gen:-1, desc:"Апаңның не қызыңның баласы. Сен оған нағашы боласың." },
+        { term:"Жиеншар", tr:"jienshar", gloss:"внучатый племянник", gen:-2, desc:"Жиеніңнің баласы — нағашы жұрттан таралған ұрпақ." },
+        { term:"Бөле", tr:"bóle", gloss:"двоюродный (дети сестёр)", gen:0, desc:"Анаң мен оның апа-сіңлісінің балалары — өзара бөле." } ]}
     ]},
-  { id:"qaiyn", title:"Қайын жұрт — неке арқылы туыс", label:"Қайын жұрт", tag:"Құда", dir:"родня через брак", hue:42,
+  { id:"qaiyn", label:"Қайын жұрт", tag:"Құда", dir:"родня через брак", hue:42,
     note:"Үйленуден кейінгі туыстар. Ерлі-зайыптының бір-бірінің жұртына қатысты атаулары.",
-    terms:[
-      { term:"Қайын ата", tr:"qaiyn ata", gloss:"свёкор / тесть", gen:1, desc:"Жұбайыңның әкесі." },
-      { term:"Қайын ене", tr:"qaiyn ene", gloss:"свекровь / тёща", gen:1, desc:"Жұбайыңның анасы." },
-      { term:"Қайын аға", tr:"qaiyn aga", gloss:"ст. брат супруга", gen:0, desc:"Жұбайыңның үлкен ер бауыры." },
-      { term:"Қайын іні", tr:"qaiyn ini", gloss:"мл. брат супруга", gen:0, desc:"Жұбайыңның кіші ер бауыры." },
-      { term:"Балдыз", tr:"baldyz", gloss:"мл. свояк/свояченица", gen:0, desc:"Жұбайыңның өзінен кіші бауыры (ұл не қыз)." },
-      { term:"Абысын", tr:"abysyn", gloss:"жёны братьев (меж собой)", gen:0, desc:"Ағалы-інілі ерлердің әйелдері бір-біріне абысын." },
-      { term:"Бажа", tr:"baja", gloss:"мужья сестёр (меж собой)", gen:0, desc:"Апалы-сіңлілі әйелдердің күйеулері бір-біріне бажа." },
-      { term:"Келін", tr:"kelin", gloss:"невестка", gen:-1, desc:"Ұлыңның не інің әйелі — үйге түскен келін." },
-      { term:"Күйеу бала", tr:"kúieu bala", gloss:"зять", gen:-1, desc:"Қызыңның күйеуі." }
+    children:[
+      { label:"Қайын ата-ене", children:[
+        { term:"Қайын ата", tr:"qaiyn ata", gloss:"свёкор / тесть", gen:1, desc:"Жұбайыңның әкесі." },
+        { term:"Қайын ене", tr:"qaiyn ene", gloss:"свекровь / тёща", gen:1, desc:"Жұбайыңның анасы." } ]},
+      { label:"Қайын аға-іні", children:[
+        { term:"Қайын аға", tr:"qaiyn aga", gloss:"ст. брат супруга", gen:0, desc:"Жұбайыңның үлкен ер бауыры." },
+        { term:"Қайын іні", tr:"qaiyn ini", gloss:"мл. брат супруга", gen:0, desc:"Жұбайыңның кіші ер бауыры." },
+        { term:"Балдыз", tr:"baldyz", gloss:"мл. свояк/свояченица", gen:0, desc:"Жұбайыңның өзінен кіші бауыры (ұл не қыз)." } ]},
+      { label:"Абысын-бажа", children:[
+        { term:"Абысын", tr:"abysyn", gloss:"жёны братьев (меж собой)", gen:0, desc:"Ағалы-інілі ерлердің әйелдері бір-біріне абысын." },
+        { term:"Бажа", tr:"baja", gloss:"мужья сестёр (меж собой)", gen:0, desc:"Апалы-сіңлілі әйелдердің күйеулері бір-біріне бажа." } ]},
+      { label:"Келін-күйеу", children:[
+        { term:"Келін", tr:"kelin", gloss:"невестка", gen:-1, desc:"Ұлыңның не інің әйелі — үйге түскен келін." },
+        { term:"Күйеу бала", tr:"kúieu bala", gloss:"зять", gen:-1, desc:"Қызыңның күйеуі." } ]}
     ]},
-  { id:"quda", title:"Құда-жекжат", label:"Құда-жекжат", tag:"Жекжат", dir:"сватья", hue:100,
+  { id:"quda", label:"Құда-жекжат", tag:"Жекжат", dir:"сватья", hue:100,
     note:"Қыз алысып-беріскен екі әулет бір-біріне құда болады.",
-    terms:[
-      { term:"Құда", tr:"quda", gloss:"сват", gen:0, desc:"Балаларың үйленген соң екінші жақтың ер туыстары." },
-      { term:"Құдағи", tr:"qudagi", gloss:"сватья", gen:0, desc:"Құда жақтың әйел туыстары." },
-      { term:"Құда бала", tr:"quda bala", gloss:"молодой сват", gen:-1, desc:"Құда жақтың жас жігіті." },
-      { term:"Құдаша", tr:"qudasha", gloss:"своячница (девушка)", gen:-1, desc:"Құда жақтың бойжеткен қызы." },
-      { term:"Жекжат", tr:"jekjat", gloss:"свойственники", gen:0, desc:"Неке арқылы жалғасқан жалпы туыстық." }
+    children:[
+      { label:"Құда-құдағи", children:[
+        { term:"Құда", tr:"quda", gloss:"сват", gen:0, desc:"Балаларың үйленген соң екінші жақтың ер туыстары." },
+        { term:"Құдағи", tr:"qudagi", gloss:"сватья", gen:0, desc:"Құда жақтың әйел туыстары." },
+        { term:"Жекжат", tr:"jekjat", gloss:"свойственники", gen:0, desc:"Неке арқылы жалғасқан жалпы туыстық." } ]},
+      { label:"Жас буын", children:[
+        { term:"Құда бала", tr:"quda bala", gloss:"молодой сват", gen:-1, desc:"Құда жақтың жас жігіті." },
+        { term:"Құдаша", tr:"qudasha", gloss:"своячница (девушка)", gen:-1, desc:"Құда жақтың бойжеткен қызы." } ]}
     ]}
 ];
 
@@ -389,9 +332,22 @@ const BRANCHES = [
 const $ = id => document.getElementById(id);
 function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
 function bColor(hue, light){ return `hsl(${hue} 58% ${light||46}%)`; }
-function genText(g){ return g>0 ? '+'+g+' буын' : (g<0 ? g+' буын' : 'қатар'); }
+function genText(g){ return g>0 ? '+'+g+' буын' : (g<0 ? g+' буын' : 'қатар буын'); }
 
-let totalTerms = 0; BRANCHES.forEach(b=>totalTerms+=b.terms.length);
+/* build node tree */
+let uid = 0; const allNodes = [];
+function build(data, parent, depth, hue){
+  const kind = depth===0 ? 'me' : (data.children ? 'group' : 'leaf');
+  const node = { id:'n'+(uid++), data, parent, depth, kind, hue, children:[], angle:0, tx:0, ty:0, cx:0, cy:0, _visible:false, el:null };
+  node.top = depth===1 ? node : (parent ? parent.top : null);
+  allNodes.push(node);
+  (data.children || []).forEach(kd => node.children.push(build(kd, node, depth+1, depth===0 ? kd.hue : hue)));
+  return node;
+}
+const rootNode = build({ children: BRANCHES }, null, 0, 0);
+function leafCount(n){ return n.kind==='leaf' ? 1 : n.children.reduce((s,c)=>s+leafCount(c),0); }
+
+let totalTerms = leafCount(rootNode);
 $('metaRow').innerHTML =
   `<span class="chip">🌳 ${BRANCHES.length} тармақ</span>` +
   `<span class="chip">📇 ${totalTerms} атау</span>` +
@@ -400,194 +356,166 @@ $('metaRow').innerHTML =
 
 /* ============================ MIND-MAP ============================ */
 const world = $('world'), edges = $('edges'), stage = $('stage');
-const CENTER = { x: 1600, y: 1300 };
-const R1 = 250, R2 = 470, SPAN = 150;
-const N = BRANCHES.length;
+const CENTER = { x: 1700, y: 1400 };
+const RADII = [0, 250, 480, 700];
+const MINS = 0.3, MAXS = 2.4;
+const expanded = new Set();
+let activeTop = null, animRAF = null;
 
-const nodes = []; // {el, kind, branchId, term(data), hue, tx,ty, cx,cy}
-let activeBranch = null;
-let animRAF = null;
+function radiusFor(d){ return d < RADII.length ? RADII[d] : RADII[RADII.length-1] + (d-RADII.length+1)*200; }
 
-function makeNode(kind, cls, inner){
-  const e = el('div', 'node ' + kind + (cls?(' '+cls):''));
-  e.appendChild(el('div', 'inner', inner));
-  world.appendChild(e);
-  return e;
+function makeNode(kind, cls, inner){ const e = el('div','node '+kind+(cls?(' '+cls):'')); e.appendChild(el('div','inner',inner)); world.appendChild(e); return e; }
+
+function buildDom(){
+  allNodes.forEach(n => {
+    let e;
+    if(n.kind==='me'){ e = makeNode('me','', '<span class="k">МЕН</span><span class="s">ego · я</span>'); }
+    else if(n.kind==='group'){
+      e = makeNode('branch', n.depth>=2?'sub':'', `<span class="lab">${n.data.label}</span><span class="cnt">${leafCount(n)}</span>`);
+      e.style.setProperty('--bcolor', bColor(n.hue));
+    } else {
+      e = makeNode('leaf','', `<span class="term">${n.data.term}</span><span class="gl">${n.data.gloss}</span>`);
+      e.style.setProperty('--bcolor', bColor(n.hue));
+      e._search = (n.data.term+' '+n.data.tr+' '+n.data.gloss+' '+n.data.desc).toLowerCase();
+    }
+    e.dataset.kind = n.kind; e._node = n; n.el = e;
+  });
+  rootNode._visible = true;
 }
 
-function buildTree(){
-  // center
-  const me = makeNode('me', '', '<span class="k">МЕН</span><span class="s">ego · я</span>');
-  me.dataset.kind = 'me';
-  nodes.push({ el: me, kind:'me', tx:0, ty:0, cx:0, cy:0 });
+function hideRec(node){ node.children.forEach(c => { c.tx=node.tx; c.ty=node.ty; c._visible=false; hideRec(c); }); }
 
-  BRANCHES.forEach((b, i) => {
-    const col = bColor(b.hue);
-    const bn = makeNode('branch', '', `<span class="lab">${b.label}</span><span class="cnt">${b.terms.length}</span>`);
-    bn.style.setProperty('--bcolor', col);
-    bn.dataset.kind = 'branch'; bn.dataset.branch = b.id;
-    nodes.push({ el: bn, kind:'branch', branchId:b.id, hue:b.hue, tx:0, ty:0, cx:0, cy:0 });
-
-    b.terms.forEach((t, k) => {
-      const ln = makeNode('leaf', 'hidden', `<span class="term">${t.term}</span><span class="gl">${t.gloss}</span>`);
-      ln.style.setProperty('--bcolor', col);
-      ln.dataset.kind = 'leaf'; ln.dataset.branch = b.id;
-      ln._data = t; ln._branch = b;
-      ln._search = (t.term+' '+t.tr+' '+t.gloss+' '+t.desc).toLowerCase();
-      nodes.push({ el: ln, kind:'leaf', branchId:b.id, hue:b.hue, term:t, tx:0, ty:0, cx:0, cy:0 });
-    });
+function placeChildrenRec(node, halfSpan){
+  const kids = node.children; if(!kids.length) return;
+  const open = node.kind==='me' || expanded.has(node.id);
+  const n = kids.length;
+  kids.forEach((c,k) => {
+    if(node.kind==='me') c.angle = -90 + k*(360/n);
+    else c.angle = n>1 ? node.angle - halfSpan + (2*halfSpan)*k/(n-1) : node.angle;
+    if(open){
+      const r = radiusFor(c.depth), a = c.angle*Math.PI/180;
+      c.tx = r*Math.cos(a); c.ty = r*Math.sin(a); c._visible = true;
+      placeChildrenRec(c, node.kind==='me' ? 46 : Math.max(20, halfSpan*0.6));
+    } else {
+      c.tx = node.tx; c.ty = node.ty; c._visible = false; hideRec(c);
+    }
   });
 }
 
 function computeTargets(){
-  const step = 360 / N;
-  BRANCHES.forEach((b, i) => {
-    const ang = (-90 + i*step) * Math.PI/180;
-    const bx = R1*Math.cos(ang), by = R1*Math.sin(ang);
-    const bnode = nodes.find(n => n.kind==='branch' && n.branchId===b.id);
-    bnode.tx = bx; bnode.ty = by;
-    bnode.el.classList.toggle('dim', activeBranch && activeBranch!==b.id);
-    bnode.el.classList.toggle('active', activeBranch===b.id);
-
-    const leaves = nodes.filter(n => n.kind==='leaf' && n.branchId===b.id);
-    const open = activeBranch===b.id;
-    const n = leaves.length;
-    leaves.forEach((ln, k) => {
-      if(open){
-        const spread = n>1 ? (-SPAN/2 + SPAN*k/(n-1)) : 0;
-        const la = (ang*180/Math.PI + spread) * Math.PI/180;
-        ln.tx = R2*Math.cos(la); ln.ty = R2*Math.sin(la);
-        ln.el.classList.remove('hidden');
-      } else {
-        ln.tx = bx; ln.ty = by;
-        ln.el.classList.add('hidden');
-      }
-    });
+  rootNode.tx = 0; rootNode.ty = 0;
+  placeChildrenRec(rootNode, 0);
+  activeTop = rootNode.children.find(c => expanded.has(c.id)) || null;
+  allNodes.forEach(n => {
+    if(n.kind!=='me') n.el.classList.toggle('hidden', !n._visible);
+    if(n.depth===1){ n.el.classList.toggle('dim', !!activeTop && n!==activeTop); n.el.classList.toggle('active', n===activeTop); }
   });
 }
 
-function edgePath(x1,y1,x2,y2){
-  const dx=x2-x1, dy=y2-y1;
-  return `M${x1},${y1} C ${x1+dx*0.5},${y1+dy*0.16} ${x1+dx*0.5},${y1+dy*0.84} ${x2},${y2}`;
-}
+function edgePath(x1,y1,x2,y2){ const dx=x2-x1, dy=y2-y1; return `M${x1},${y1} C ${x1+dx*0.5},${y1+dy*0.16} ${x1+dx*0.5},${y1+dy*0.84} ${x2},${y2}`; }
 function drawEdges(){
   const O = CENTER, out = [];
-  BRANCHES.forEach(b => {
-    const bn = nodes.find(n=>n.kind==='branch'&&n.branchId===b.id);
-    const dim = activeBranch && activeBranch!==b.id;
-    out.push(`<path d="${edgePath(O.x, O.y, O.x+bn.cx, O.y+bn.cy)}" stroke="${bColor(b.hue)}" stroke-width="2.4" fill="none" opacity="${dim?0.25:0.85}" stroke-linecap="round"/>`);
-    if(activeBranch===b.id){
-      nodes.filter(n=>n.kind==='leaf'&&n.branchId===b.id).forEach(ln=>{
-        out.push(`<path d="${edgePath(O.x+bn.cx, O.y+bn.cy, O.x+ln.cx, O.y+ln.cy)}" stroke="${bColor(b.hue,60)}" stroke-width="1.8" fill="none" opacity="0.75" stroke-linecap="round"/>`);
-      });
-    }
-  });
+  (function walk(node){
+    const open = node.kind==='me' || expanded.has(node.id);
+    if(!open) return;
+    node.children.forEach(c => {
+      if(!c._visible) return;
+      const w = c.depth===1 ? 2.4 : c.depth===2 ? 1.9 : 1.5;
+      const dim = activeTop && c.top!==activeTop;
+      out.push(`<path d="${edgePath(O.x+node.cx, O.y+node.cy, O.x+c.cx, O.y+c.cy)}" stroke="${bColor(c.hue, c.depth>=3?60:46)}" stroke-width="${w}" fill="none" opacity="${dim?0.22:0.8}" stroke-linecap="round"/>`);
+      walk(c);
+    });
+  })(rootNode);
   edges.innerHTML = out.join('');
 }
 
-function placeNodes(){
-  nodes.forEach(n => { n.el.style.left = (CENTER.x + n.cx)+'px'; n.el.style.top = (CENTER.y + n.cy)+'px'; });
+function placeNodes(){ allNodes.forEach(n => { n.el.style.left = (CENTER.x+n.cx)+'px'; n.el.style.top = (CENTER.y+n.cy)+'px'; }); }
+
+function targetView(){
+  const r = stage.getBoundingClientRect(); if(!r.width) return null;
+  let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
+  allNodes.forEach(n => { if(!n._visible && n.kind!=='me') return; const x=CENTER.x+n.tx, y=CENTER.y+n.ty; minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y); });
+  const pad=120; minX-=pad;minY-=pad;maxX+=pad;maxY+=pad;
+  const bw=Math.max(1,maxX-minX), bh=Math.max(1,maxY-minY);
+  let s = Math.min(r.width/bw, r.height/bh); s = Math.max(MINS, Math.min(1.25, s));
+  const cx=(minX+maxX)/2, cy=(minY+maxY)/2;
+  return { s, tx: r.width/2 - cx*s, ty: r.height/2 - cy*s };
 }
+
+const view = { tx:0, ty:0, s:0.85 };
+function applyView(){ world.style.transform = `translate(${view.tx}px,${view.ty}px) scale(${view.s})`; }
 
 function relayout(){
   computeTargets();
-  const starts = nodes.map(n => ({cx:n.cx, cy:n.cy}));
-  const t0 = performance.now(), dur = 460;
+  const tv = targetView();
+  const nStart = allNodes.map(n => ({cx:n.cx, cy:n.cy}));
+  const vStart = { ...view };
+  const t0 = performance.now(), dur = 520;
   if(animRAF) cancelAnimationFrame(animRAF);
-  function frame(now){
-    let p = Math.min(1, (now-t0)/dur);
-    const e = 1 - Math.pow(1-p, 3);
-    nodes.forEach((n,i) => { n.cx = starts[i].cx + (n.tx-starts[i].cx)*e; n.cy = starts[i].cy + (n.ty-starts[i].cy)*e; });
+  (function frame(now){
+    const p = Math.min(1, (now-t0)/dur), e = 1 - Math.pow(1-p, 3);
+    allNodes.forEach((n,i) => { n.cx = nStart[i].cx + (n.tx-nStart[i].cx)*e; n.cy = nStart[i].cy + (n.ty-nStart[i].cy)*e; });
+    if(tv){ view.tx=vStart.tx+(tv.tx-vStart.tx)*e; view.ty=vStart.ty+(tv.ty-vStart.ty)*e; view.s=vStart.s+(tv.s-vStart.s)*e; applyView(); }
     placeNodes(); drawEdges();
-    if(p < 1) animRAF = requestAnimationFrame(frame);
-  }
-  animRAF = requestAnimationFrame(frame);
+    if(p<1) animRAF = requestAnimationFrame(frame);
+  })(performance.now());
 }
 
-function setActive(id){ activeBranch = id; relayout(); }
-
-/* ---------- pan / zoom ---------- */
-const view = { tx:0, ty:0, s:0.85 };
-const MINS = 0.35, MAXS = 2.2;
-function applyView(){ world.style.transform = `translate(${view.tx}px,${view.ty}px) scale(${view.s})`; }
-function fitView(){
-  const r = stage.getBoundingClientRect();
-  const s = Math.max(MINS, Math.min(1.15, Math.min(r.width/1250, r.height/1150)));
-  view.s = s; view.tx = r.width/2 - CENTER.x*s; view.ty = r.height/2 - CENTER.y*s;
-  applyView();
-}
-function zoomAround(cx, cy, factor){
-  const ns = Math.max(MINS, Math.min(MAXS, view.s*factor));
-  const wx = (cx-view.tx)/view.s, wy = (cy-view.ty)/view.s;
-  view.s = ns; view.tx = cx - wx*ns; view.ty = cy - wy*ns; applyView();
-}
-
+/* ---- pan / zoom ---- */
+function zoomAround(cx, cy, factor){ const ns=Math.max(MINS,Math.min(MAXS,view.s*factor)); const wx=(cx-view.tx)/view.s, wy=(cy-view.ty)/view.s; view.s=ns; view.tx=cx-wx*ns; view.ty=cy-wy*ns; applyView(); }
 const pointers = new Map();
 let panStart=null, downView=null, downNode=null, moved=0, pinch=null;
 stage.addEventListener('pointerdown', e => {
-  if(e.target.closest('.zoombar')) return; // let control buttons receive their click
+  if(e.target.closest('.zoombar')) return;
   stage.setPointerCapture(e.pointerId);
   pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
   downNode = e.target.closest('.node'); moved = 0;
   if(pointers.size===1){ panStart={x:e.clientX,y:e.clientY}; downView={...view}; stage.classList.add('grabbing'); }
-  else if(pointers.size===2){ const p=[...pointers.values()]; const r=stage.getBoundingClientRect();
-    pinch={ d:Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y), s:view.s, tx:view.tx, ty:view.ty,
-            mx:(p[0].x+p[1].x)/2 - r.left, my:(p[0].y+p[1].y)/2 - r.top }; panStart=null; }
+  else if(pointers.size===2){ const p=[...pointers.values()]; const r=stage.getBoundingClientRect(); pinch={ d:Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y), s:view.s, tx:view.tx, ty:view.ty, mx:(p[0].x+p[1].x)/2 - r.left, my:(p[0].y+p[1].y)/2 - r.top }; panStart=null; }
 });
 stage.addEventListener('pointermove', e => {
   if(!pointers.has(e.pointerId)) return;
   pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
   if(pinch && pointers.size>=2){
-    const p=[...pointers.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y);
-    const ns=Math.max(MINS,Math.min(MAXS, pinch.s*(d/pinch.d)));
-    const wx=(pinch.mx-pinch.tx)/pinch.s, wy=(pinch.my-pinch.ty)/pinch.s;
-    view.s=ns; view.tx=pinch.mx-wx*ns; view.ty=pinch.my-wy*ns; applyView();
+    const p=[...pointers.values()], d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y), ns=Math.max(MINS,Math.min(MAXS,pinch.s*(d/pinch.d)));
+    const wx=(pinch.mx-pinch.tx)/pinch.s, wy=(pinch.my-pinch.ty)/pinch.s; view.s=ns; view.tx=pinch.mx-wx*ns; view.ty=pinch.my-wy*ns; applyView();
   } else if(panStart){
-    const dx=e.clientX-panStart.x, dy=e.clientY-panStart.y;
-    moved=Math.max(moved, Math.hypot(dx,dy));
-    view.tx=downView.tx+dx; view.ty=downView.ty+dy; applyView();
+    const dx=e.clientX-panStart.x, dy=e.clientY-panStart.y; moved=Math.max(moved,Math.hypot(dx,dy)); view.tx=downView.tx+dx; view.ty=downView.ty+dy; applyView();
   }
 });
 function endPointer(e){
   if(pointers.has(e.pointerId)) pointers.delete(e.pointerId);
   if(pointers.size<2) pinch=null;
-  if(pointers.size===0){
-    stage.classList.remove('grabbing');
-    if(downNode && moved<6) handleNodeClick(downNode);
-    panStart=null; downNode=null;
-  }
+  if(pointers.size===0){ stage.classList.remove('grabbing'); if(downNode && moved<6) handleNodeClick(downNode); panStart=null; downNode=null; }
 }
 stage.addEventListener('pointerup', endPointer);
 stage.addEventListener('pointercancel', endPointer);
-stage.addEventListener('wheel', e => {
-  e.preventDefault(); const r=stage.getBoundingClientRect();
-  zoomAround(e.clientX-r.left, e.clientY-r.top, e.deltaY<0 ? 1.12 : 1/1.12);
-}, { passive:false });
-
+stage.addEventListener('wheel', e => { e.preventDefault(); const r=stage.getBoundingClientRect(); zoomAround(e.clientX-r.left, e.clientY-r.top, e.deltaY<0?1.12:1/1.12); }, {passive:false});
 $('zin').onclick = () => { const r=stage.getBoundingClientRect(); zoomAround(r.width/2, r.height/2, 1.2); };
 $('zout').onclick = () => { const r=stage.getBoundingClientRect(); zoomAround(r.width/2, r.height/2, 1/1.2); };
-$('zfit').onclick = () => { setActive(null); fitView(); };
+$('zfit').onclick = () => { expanded.clear(); closePanel(); relayout(); };
 
-/* ---------- node click ---------- */
-function handleNodeClick(nodeEl){
-  const kind = nodeEl.dataset.kind;
-  if(kind==='me'){ setActive(null); closePanel(); }
-  else if(kind==='branch'){ setActive(activeBranch===nodeEl.dataset.branch ? null : nodeEl.dataset.branch); }
-  else if(kind==='leaf'){ openPanel(nodeEl._data, nodeEl._branch); selectLeaf(nodeEl); }
+/* ---- click ---- */
+function collapseNode(node){ expanded.delete(node.id); node.children.forEach(collapseNode); }
+function handleNodeClick(elt){
+  const node = elt._node;
+  if(node.kind==='me'){ expanded.clear(); closePanel(); relayout(); }
+  else if(node.kind==='group'){
+    if(expanded.has(node.id)){ collapseNode(node); }
+    else { if(node.depth===1) expanded.clear(); expanded.add(node.id); }
+    relayout();
+  } else { openPanel(node); selectLeaf(elt); }
 }
-function selectLeaf(nodeEl){
-  document.querySelectorAll('.node.leaf.sel').forEach(n=>n.classList.remove('sel'));
-  if(nodeEl) nodeEl.classList.add('sel');
-}
+function selectLeaf(elt){ document.querySelectorAll('.node.leaf.sel').forEach(n=>n.classList.remove('sel')); if(elt) elt.classList.add('sel'); }
 
-/* ============================ DETAIL PANEL ============================ */
-function openPanel(t, b){
-  $('pTag').textContent = b.tag + ' · ' + b.label.replace(/\n/g,' ');
-  $('pTag').style.background = bColor(b.hue);
-  $('pTerm').textContent = t.term;
-  $('pTr').textContent = t.tr;
-  $('pGloss').textContent = t.gloss;
-  $('pMeta').innerHTML = `<span>${genText(t.gen)}</span><span>${b.dir}</span>`;
+/* ============================ PANEL ============================ */
+function pathOf(node){ const parts=[]; let a=node.parent; while(a && a.kind!=='me'){ parts.unshift(a.data.label); a=a.parent; } return parts.join(' → '); }
+function openPanel(node){
+  const t=node.data, top=node.top;
+  $('pTag').textContent = top.data.tag + ' · ' + top.data.label; $('pTag').style.background = bColor(node.hue);
+  $('pPath').textContent = pathOf(node);
+  $('pTerm').textContent = t.term; $('pTr').textContent = t.tr; $('pGloss').textContent = t.gloss;
+  $('pMeta').innerHTML = `<span>${genText(t.gen)}</span><span>${top.data.dir}</span>`;
   $('pDesc').textContent = t.desc;
   $('panel').classList.add('open'); $('backdrop').classList.add('show'); $('panel').setAttribute('aria-hidden','false');
 }
@@ -595,89 +523,91 @@ function closePanel(){ $('panel').classList.remove('open'); $('backdrop').classL
 $('pClose').onclick = closePanel; $('backdrop').onclick = closePanel;
 document.addEventListener('keydown', e => { if(e.key==='Escape') closePanel(); });
 
-/* ============================ LIST VIEW ============================ */
-const listRoot = $('tree');
-BRANCHES.forEach(b => {
-  const sec = el('section', 'branch-sec'); sec.dataset.id = b.id;
-  const col = bColor(b.hue);
-  const head = el('div', 'branch-head');
+/* ============================ LIST VIEW (вложенный) ============================ */
+const listRoot = $('listRoot');
+rootNode.children.forEach(cat => {
+  const b = cat.data, col = bColor(cat.hue);
+  const sec = el('section','branch-sec'); sec.dataset.id = b.id;
+  const head = el('div','branch-head');
   const tag = el('span','branch-tag', b.tag); tag.style.background = col;
-  const h2 = el('h2', null, b.title); h2.prepend(tag);
+  const h2 = el('h2', null, b.label); h2.prepend(tag);
   head.appendChild(h2); head.appendChild(el('span','dir', b.dir)); sec.appendChild(head);
-  if(b.note) sec.appendChild(el('p', 'branch-note'+(b.warn?' warn':''), b.note));
-  const cards = el('div','cards');
-  b.terms.forEach(t => {
-    const card = el('div','card');
-    card.innerHTML = `<div class="gen-badge">${t.gen>0?'+'+t.gen:(t.gen<0?t.gen:'•')}</div>`+
-      `<div class="term">${t.term}</div><div class="translit">${t.tr}</div>`+
-      `<div class="gloss">${t.gloss}</div><div class="desc">${t.desc}</div>`;
-    card._search = (t.term+' '+t.tr+' '+t.gloss+' '+t.desc).toLowerCase();
-    card.addEventListener('click', ()=>card.classList.toggle('open'));
-    cards.appendChild(card);
+  if(b.note) sec.appendChild(el('p','branch-note'+(b.warn?' warn':''), b.note));
+  cat.children.forEach(sg => {
+    const wrap = el('div','subgroup');
+    const sh = el('div','subhead');
+    const dot = el('span','dot'); dot.style.background = col;
+    sh.appendChild(dot); sh.appendChild(el('span', null, sg.data.label)); sh.appendChild(el('span','sc', '· '+leafCount(sg)));
+    wrap.appendChild(sh);
+    const cards = el('div','cards');
+    sg.children.forEach(ln => {
+      const t = ln.data, card = el('div','card');
+      card.innerHTML = `<div class="gen-badge">${t.gen>0?'+'+t.gen:(t.gen<0?t.gen:'•')}</div><div class="term">${t.term}</div><div class="translit">${t.tr}</div><div class="gloss">${t.gloss}</div><div class="desc">${t.desc}</div>`;
+      card._search = (t.term+' '+t.tr+' '+t.gloss+' '+t.desc).toLowerCase();
+      card.addEventListener('click', () => card.classList.toggle('open'));
+      cards.appendChild(card);
+    });
+    wrap.appendChild(cards); sec.appendChild(wrap);
   });
-  sec.appendChild(cards); listRoot.appendChild(sec);
+  listRoot.appendChild(sec);
 });
 
 /* ============================ SEARCH ============================ */
 const search = $('search');
-search.addEventListener('input', () => {
-  const q = search.value.trim().toLowerCase();
-  if(currentView==='list') searchList(q); else searchTree(q);
-});
+search.addEventListener('input', () => { const q=search.value.trim().toLowerCase(); if(currentView==='list') searchList(q); else searchTree(q); });
 function searchList(q){
   let any=false;
-  document.querySelectorAll('section.branch-sec').forEach(sec=>{
+  document.querySelectorAll('section.branch-sec').forEach(sec => {
     let sv=false;
-    sec.querySelectorAll('.card').forEach(c=>{ const m=!q||c._search.includes(q); c.style.display=m?'':'none'; if(m)sv=true; });
+    sec.querySelectorAll('.subgroup').forEach(sg => {
+      let gv=false;
+      sg.querySelectorAll('.card').forEach(c => { const m=!q||c._search.includes(q); c.style.display=m?'':'none'; if(m)gv=true; });
+      sg.style.display=gv?'':'none'; if(gv)sv=true;
+    });
     sec.style.display=sv?'':'none'; if(sv)any=true;
   });
   $('empty').classList.toggle('show', !any);
 }
 function searchTree(q){
-  let first=null;
-  nodes.filter(n=>n.kind==='leaf').forEach(n=>{
-    const m = q && n.el._search.includes(q);
-    n.el.classList.toggle('hl', !!m);
-    if(m && !first) first=n;
-  });
-  if(q && first){ if(activeBranch!==first.branchId) setActive(first.branchId); }
+  allNodes.forEach(n => { if(n.kind==='leaf') n.el.classList.remove('hl'); });
+  if(!q) return;
+  const matches = allNodes.filter(n => n.kind==='leaf' && n.el._search.includes(q));
+  matches.forEach(n => n.el.classList.add('hl'));
+  if(matches.length){
+    expanded.clear();
+    let a = matches[0].parent; while(a && a.kind!=='me'){ expanded.add(a.id); a=a.parent; }
+    relayout();
+  }
 }
 
 /* ============================ VIEW TOGGLE ============================ */
-let currentView = 'tree';
-let treeReady = false;
+let currentView='tree', treeReady=false;
 function setView(v){
-  currentView = v;
+  currentView=v;
   document.querySelectorAll('#viewSeg button').forEach(btn=>btn.classList.toggle('active', btn.dataset.view===v));
   $('treeWrap').style.display = v==='tree' ? 'block' : 'none';
   $('listView').style.display = v==='list' ? 'block' : 'none';
   try{ localStorage.setItem('kk-view', v); }catch(e){}
   const q = search.value.trim().toLowerCase();
-  if(v==='tree'){ if(!treeReady){ treeReady=true; fitView(); relayout(); } else { fitView(); } searchTree(q); }
+  if(v==='tree'){ if(!treeReady){ treeReady=true; relayout(); } else { relayout(); } searchTree(q); }
   else searchList(q);
 }
 $('viewSeg').addEventListener('click', e => { const b=e.target.closest('button'); if(b) setView(b.dataset.view); });
 
 /* ============================ THEME ============================ */
 const themeBtn = $('themeBtn');
-function applyTheme(mode){
-  document.documentElement.setAttribute('data-theme', mode);
-  themeBtn.textContent = mode==='dark' ? '☀️ Жарық' : '🌙 Қараңғы';
-  if(treeReady) drawEdges();
-}
+function applyTheme(mode){ document.documentElement.setAttribute('data-theme', mode); themeBtn.textContent = mode==='dark'?'☀️ Жарық':'🌙 Қараңғы'; if(treeReady) drawEdges(); }
 let saved=null; try{ saved=localStorage.getItem('kk-tree-theme'); }catch(e){}
-if(!saved) saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+if(!saved) saved=(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
 applyTheme(saved);
-themeBtn.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
-  applyTheme(next); try{ localStorage.setItem('kk-tree-theme', next); }catch(e){}
-});
+themeBtn.addEventListener('click', () => { const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'; applyTheme(next); try{localStorage.setItem('kk-tree-theme',next);}catch(e){} });
 
 /* ============================ INIT ============================ */
-buildTree();
+buildDom();
+placeNodes();
 let startView='tree'; try{ startView=localStorage.getItem('kk-view')||'tree'; }catch(e){}
 setView(startView);
-window.addEventListener('resize', () => { if(currentView==='tree' && treeReady) fitView(); });
+window.addEventListener('resize', () => { if(currentView==='tree' && treeReady) relayout(); });
 </script>
 </body>
 </html>
