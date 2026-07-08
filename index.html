@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Қазақ туыстық ағашы — Дерево родства казахов</title>
+<style>
+  :root {
+    --bg: #f4efe6;
+    --bg-grad-1: #faf6ee;
+    --bg-grad-2: #ece3d2;
+    --panel: #fffdf8;
+    --panel-2: #f7f1e6;
+    --ink: #2c2418;
+    --ink-soft: #6b5d47;
+    --line: #d8cbb2;
+    --accent: #9c6b2f;
+    --accent-soft: #c79a5e;
+    --accent-ink: #5c3d15;
+    --me: #2f7d5b;
+    --me-soft: #d3ecdf;
+    --shadow: 0 6px 22px rgba(60, 44, 20, 0.10);
+    --shadow-lg: 0 14px 40px rgba(60, 44, 20, 0.16);
+    --radius: 16px;
+  }
+  :root[data-theme="dark"] {
+    --bg: #16130e;
+    --bg-grad-1: #1c1811;
+    --bg-grad-2: #100d09;
+    --panel: #221d15;
+    --panel-2: #2b241a;
+    --ink: #f2e9d8;
+    --ink-soft: #b7a888;
+    --line: #3d3425;
+    --accent: #d8a860;
+    --accent-soft: #a67c3e;
+    --accent-ink: #f4dcae;
+    --me: #5fd39c;
+    --me-soft: #1e3a2c;
+    --shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 15% -10%, var(--bg-grad-1), transparent 60%),
+      radial-gradient(1000px 700px at 100% 0%, var(--bg-grad-2), transparent 55%),
+      var(--bg);
+    min-height: 100vh;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  /* ---------- Header ---------- */
+  header.top {
+    display: flex; flex-wrap: wrap; align-items: flex-start;
+    gap: 18px; margin-bottom: 26px;
+  }
+  .brand { flex: 1 1 340px; min-width: 260px; }
+  .ornament {
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 6px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 46px); margin: 0 0 6px;
+    line-height: 1.08; letter-spacing: -0.5px;
+  }
+  h1 .ru { display: block; font-size: 0.44em; color: var(--ink-soft); font-weight: 500; letter-spacing: 0; margin-top: 4px; }
+  .lede { color: var(--ink-soft); font-size: 15px; max-width: 640px; margin: 10px 0 0; }
+  .lede b { color: var(--accent-ink); }
+
+  .controls { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .theme-btn {
+    border: 1px solid var(--line); background: var(--panel);
+    color: var(--ink); border-radius: 999px; padding: 9px 16px;
+    cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: var(--shadow);
+    transition: transform 0.12s, background 0.2s;
+  }
+  .theme-btn:hover { transform: translateY(-1px); }
+  .search {
+    position: relative;
+  }
+  .search input {
+    width: 240px; max-width: 60vw; padding: 10px 14px 10px 38px;
+    border-radius: 999px; border: 1px solid var(--line);
+    background: var(--panel); color: var(--ink); font-size: 14px;
+    box-shadow: var(--shadow); outline: none;
+  }
+  .search input:focus { border-color: var(--accent-soft); }
+  .search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
+
+  /* ---------- Legend / stats ---------- */
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 30px; }
+  .chip {
+    font-size: 12.5px; font-weight: 600; color: var(--accent-ink);
+    background: var(--panel-2); border: 1px solid var(--line);
+    padding: 5px 12px; border-radius: 999px;
+  }
+
+  /* ---------- ME node ---------- */
+  .me-node {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    background: linear-gradient(160deg, var(--me-soft), var(--panel));
+    border: 2px solid var(--me); border-radius: 22px;
+    padding: 20px 26px; margin: 0 auto 8px; width: fit-content;
+    box-shadow: var(--shadow-lg);
+  }
+  .me-node .k { font-size: 30px; font-weight: 800; color: var(--me); letter-spacing: 1px; }
+  .me-node .k small { display:block; font-size: 13px; color: var(--ink-soft); font-weight: 600; letter-spacing: 0; margin-top: 2px;}
+  .stem { width: 2px; height: 26px; background: var(--line); margin: 0 auto; }
+
+  /* ---------- Section ---------- */
+  section.branch {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 20px 20px 8px;
+    margin-bottom: 20px; box-shadow: var(--shadow);
+    scroll-margin-top: 16px;
+  }
+  .branch-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .branch-head h2 { font-size: 20px; margin: 0; display: flex; align-items: center; gap: 9px; }
+  .branch-head .dir { font-size: 13px; color: var(--ink-soft); }
+  .branch-tag {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+    color: #fff; background: var(--accent); padding: 3px 9px; border-radius: 6px;
+  }
+  .branch-note { font-size: 13.5px; color: var(--ink-soft); margin: 2px 0 14px; }
+  .branch-note.warn {
+    background: var(--panel-2); border-left: 3px solid var(--accent-soft);
+    padding: 8px 12px; border-radius: 8px;
+  }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+
+  .card {
+    background: var(--panel-2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 13px 14px; cursor: pointer;
+    transition: transform 0.14s, box-shadow 0.14s, border-color 0.14s;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--accent-soft); }
+  .card.open { border-color: var(--accent); box-shadow: var(--shadow); }
+  .card .gen-badge {
+    position: absolute; top: 10px; right: 10px; font-size: 11px; font-weight: 700;
+    color: var(--accent); background: var(--panel); border: 1px solid var(--line);
+    width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .card .term { font-size: 17px; font-weight: 700; color: var(--ink); padding-right: 26px; }
+  .card .translit { font-size: 12px; color: var(--accent); font-style: italic; }
+  .card .gloss { font-size: 13.5px; color: var(--ink-soft); margin-top: 3px; }
+  .card .desc {
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.28s ease, opacity 0.2s ease, margin 0.2s;
+    font-size: 13.5px; color: var(--ink); margin-top: 0;
+  }
+  .card.open .desc { max-height: 320px; opacity: 1; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); }
+
+  .empty { text-align: center; color: var(--ink-soft); padding: 40px 0; display: none; }
+  .empty.show { display: block; }
+
+  footer {
+    margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line);
+    color: var(--ink-soft); font-size: 13px;
+  }
+  footer b { color: var(--accent-ink); }
+
+  @media (max-width: 560px) {
+    .controls { align-items: stretch; width: 100%; }
+    .search input { width: 100%; max-width: none; }
+    header.top { flex-direction: column; }
+    .cards { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="ornament">◆ Шежіре ◆ Туыстық жүйе</div>
+      <h1>Қазақ туыстық ағашы
+        <span class="ru">Дерево родственных связей казахов</span>
+      </h1>
+      <p class="lede">
+        Қазақ халқында <b>«жеті атасын білу»</b> — әр адамға парыз. Бұл бет —
+        «Мен» деген адамды орталыққа қойып, оның төңірегіндегі туыстық
+        атауларды тармақтап көрсететін интерактивті сызба.
+        <br><span style="opacity:.85">Карточкаға басыңыз — түсініктеме ашылады. Іздеу арқылы кез келген атауды табуға болады.</span>
+      </p>
+    </div>
+    <div class="controls">
+      <button class="theme-btn" id="themeBtn" type="button">🌙 Қараңғы режим</button>
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="Іздеу: ата, немере, жиен…" autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <div class="meta-row" id="metaRow"></div>
+
+  <div class="me-node">
+    <div class="k">МЕН<small>ego · я (сам адам)</small></div>
+  </div>
+  <div class="stem"></div>
+
+  <main id="tree"></main>
+
+  <div class="empty" id="empty">Ештеңе табылмады. Басқа сөзбен іздеп көріңіз.</div>
+
+  <footer>
+    <p><b>Ескерту.</b> Туыстық атаулар өңірге және дереккөзге қарай аздап
+    өзгеше берілуі мүмкін (әсіресе <b>жеті атаның</b> тізімі мен алыс ұрпақ
+    атаулары). Мұнда кеңінен қабылданған нұсқа келтірілген. Бұл — оқу-танымдық
+    мақсаттағы жалпы сызба, нақты бір шежіре емес.</p>
+    <p style="opacity:.7">Қазақ туыстық ағашы · жеке және білім беру мақсатына арналған.</p>
+  </footer>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ *
+ *  Data: Kazakh kinship terms grouped into branches (relative to ego)
+ * ------------------------------------------------------------------ */
+const BRANCHES = [
+  {
+    id: "orleu",
+    title: "Өрлеу — жеті ата",
+    tag: "Жоғары",
+    dir: "предки ↑",
+    note: "«Жеті атасын білу» — жеті буын ата-бабасын жатқа білу дәстүрі. Тізімнің соңғы буындары әр дереккөзде сәл өзгешелеу аталады.",
+    warn: true,
+    terms: [
+      { term: "Әке", tr: "áke", gloss: "отец", gen: 1, desc: "1-буын. Сені дүниеге әкелген еркек — тікелей туған атаң." },
+      { term: "Ата", tr: "ata", gloss: "дед", gen: 2, desc: "2-буын. Әкеңнің әкесі. Қазақта ата — рудың, әулеттің тірегі." },
+      { term: "Баба (Арғы ата)", tr: "baba", gloss: "прадед", gen: 3, desc: "3-буын. Атаңның әкесі. «Арғы ата» деп те атайды." },
+      { term: "Түп ата", tr: "túp ata", gloss: "прапрадед", gen: 4, desc: "4-буын. Бабаңның әкесі — әулеттің түп-тамыры." },
+      { term: "Тек ата", tr: "tek ata", gloss: "5-е колено", gen: 5, desc: "5-буын. Түп атаңның әкесі (кей дереккөзде «ата тек»)." },
+      { term: "Ата тек", tr: "ata tek", gloss: "6-е колено", gen: 6, desc: "6-буын. Ру-тектің арғы бастауына жақын буын." },
+      { term: "Баба тек", tr: "baba tek", gloss: "7-е колено", gen: 7, desc: "7-буын. Жеті атаның ең соңғы, түпкі буыны." }
+    ]
+  },
+  {
+    id: "urpaq",
+    title: "Ұрпақ — жеті буын",
+    tag: "Төмен",
+    dir: "потомки ↓",
+    note: "«Менен» тарайтын жеті буын ұрпақ: әр буынның өз атауы бар.",
+    terms: [
+      { term: "Бала", tr: "bala", gloss: "сын / дочь", gen: 1, desc: "1-буын. Өз перзентің — ұл (сын) не қыз (дочь)." },
+      { term: "Немере", tr: "nemere", gloss: "внук / внучка", gen: 2, desc: "2-буын. Балаңның баласы." },
+      { term: "Шөбере", tr: "shóbere", gloss: "правнук", gen: 3, desc: "3-буын. Немереңнің баласы." },
+      { term: "Шөпшек", tr: "shópshek", gloss: "праправнук", gen: 4, desc: "4-буын. Шөбереңнің баласы." },
+      { term: "Немене", tr: "nemene", gloss: "5-е поколение", gen: 5, desc: "5-буын. Шөпшектің баласы." },
+      { term: "Туажат", tr: "tuajat", gloss: "6-е поколение", gen: 6, desc: "6-буын. Неменеңнің баласы — «тумай жат болған» ұрпақ." },
+      { term: "Жұрағат", tr: "juragat", gloss: "7-е поколение", gen: 7, desc: "7-буын. Ең алыс ұрпақ буыны (кей жерде «жүрежат»)." }
+    ]
+  },
+  {
+    id: "ata-ana",
+    title: "Ата-ана және ата-әже",
+    tag: "Түбір",
+    dir: "родители и деды",
+    note: "Тікелей ата-анаң және екі жақтың ата-әжелері.",
+    terms: [
+      { term: "Әке", tr: "áke", gloss: "отец", gen: 1, desc: "Туған әкең." },
+      { term: "Ана (Шеше)", tr: "ana / sheshe", gloss: "мать", gen: 1, desc: "Туған анаң. «Шеше», «апа» деп те атайды." },
+      { term: "Ата", tr: "ata", gloss: "дед по отцу", gen: 2, desc: "Әкеңнің әкесі — өз жұртыңның атасы." },
+      { term: "Әже", tr: "áje", gloss: "бабушка по отцу", gen: 2, desc: "Әкеңнің анасы. «Апа» деп те атайды." },
+      { term: "Нағашы ата", tr: "nagashy ata", gloss: "дед по матери", gen: 2, desc: "Анаңның әкесі — нағашы жұртыңның атасы." },
+      { term: "Нағашы әже", tr: "nagashy áje", gloss: "бабушка по матери", gen: 2, desc: "Анаңның анасы." }
+    ]
+  },
+  {
+    id: "bauyr",
+    title: "Бауырлар",
+    tag: "Қатар",
+    dir: "братья и сёстры",
+    note: "Ағайынды бауырлар. Қазақта жасы мен жынысына қарай бөлек атау беріледі.",
+    terms: [
+      { term: "Аға", tr: "aga", gloss: "старший брат", gen: 0, desc: "Өзіңнен үлкен ер бауырың." },
+      { term: "Іні", tr: "ini", gloss: "младший брат", gen: 0, desc: "Өзіңнен кіші ер бауырың." },
+      { term: "Апа (Әпке)", tr: "apa / ápke", gloss: "старшая сестра", gen: 0, desc: "Өзіңнен үлкен қыз бауырың." },
+      { term: "Қарындас", tr: "qaryndas", gloss: "мл. сестра (говорит мужчина)", gen: 0, desc: "Ер адамның өзінен кіші қыз бауыры." },
+      { term: "Сіңлі", tr: "síńli", gloss: "мл. сестра (говорит женщина)", gen: 0, desc: "Әйел адамның өзінен кіші қыз бауыры." },
+      { term: "Бауыр", tr: "bauyr", gloss: "родич, кровный", gen: 0, desc: "Жалпы қандас туыс — «бір бауырдан жаралған»." }
+    ]
+  },
+  {
+    id: "oz-jurt",
+    title: "Әке жағы — өз жұрты",
+    tag: "Қандас",
+    dir: "родня по отцу",
+    note: "Әкеңнің ағайын-туысы: аталас, бір атадан тарайтын қандастар.",
+    terms: [
+      { term: "Аға / Көке", tr: "aga / kóke", gloss: "дядя (ст. брат отца)", gen: 1, desc: "Әкеңнің үлкен ағасы. «Көке» деп сыйлап атайды." },
+      { term: "Әке іні / Аға", tr: "áke ini", gloss: "дядя (мл. брат отца)", gen: 1, desc: "Әкеңнің інісі — саған да аға." },
+      { term: "Тәте (Апа)", tr: "táte", gloss: "тётя (сестра отца)", gen: 1, desc: "Әкеңнің қарындасы не апасы." },
+      { term: "Аталас", tr: "atalas", gloss: "родня по общему деду", gen: 0, desc: "Бір атадан тараған ағайын — «аталас туыс»." },
+      { term: "Немерелес", tr: "nemereles", gloss: "троюродная родня", gen: 0, desc: "Бір бабадан тараған, немере деңгейіндегі ағайын." }
+    ]
+  },
+  {
+    id: "nagashy",
+    title: "Нағашы жұрт — ана жағы",
+    tag: "Нағашы",
+    dir: "родня по матери",
+    note: "Анаңның руы — нағашы жұртың. «Нағашыға жиен ерке» деген сөз содан.",
+    terms: [
+      { term: "Нағашы", tr: "nagashy", gloss: "родня по матери", gen: 0, desc: "Анаңның бүкіл ру-тегі, туыстары." },
+      { term: "Нағашы аға", tr: "nagashy aga", gloss: "дядя по матери", gen: 1, desc: "Анаңның ер бауыры — нағашың." },
+      { term: "Нағашы апа / тәте", tr: "nagashy apa", gloss: "тётя по матери", gen: 1, desc: "Анаңның қыз бауыры." },
+      { term: "Жиен", tr: "jien", gloss: "племянник (по сестре/дочери)", gen: -1, desc: "Апаңның не қызыңның баласы. Сен нағашысы боласың." },
+      { term: "Бөле", tr: "bóle", gloss: "двоюродный (дети сестёр)", gen: 0, desc: "Анаң мен оның апа-сіңлісінің балалары — өзара бөле." }
+    ]
+  },
+  {
+    id: "qaiyn",
+    title: "Қайын жұрт — неке арқылы туыс",
+    tag: "Құда",
+    dir: "родня через брак",
+    note: "Үйленуден кейінгі туыстар. Ерлі-зайыптының бір-бірінің жұртына қатысты атаулары.",
+    terms: [
+      { term: "Қайын ата", tr: "qaiyn ata", gloss: "свёкор / тесть", gen: 1, desc: "Жұбайыңның әкесі." },
+      { term: "Қайын ене", tr: "qaiyn ene", gloss: "свекровь / тёща", gen: 1, desc: "Жұбайыңның анасы." },
+      { term: "Қайын аға", tr: "qaiyn aga", gloss: "ст. брат супруга", gen: 0, desc: "Жұбайыңның үлкен ер бауыры." },
+      { term: "Қайын іні", tr: "qaiyn ini", gloss: "мл. брат супруга", gen: 0, desc: "Жұбайыңның кіші ер бауыры." },
+      { term: "Балдыз", tr: "baldyz", gloss: "мл. свояк/свояченица", gen: 0, desc: "Жұбайыңның өзінен кіші бауыры (ұл не қыз)." },
+      { term: "Абысын", tr: "abysyn", gloss: "жёны братьев (меж собой)", gen: 0, desc: "Ағалы-інілі ерлердің әйелдері бір-біріне абысын." },
+      { term: "Бажа", tr: "baja", gloss: "мужья сестёр (меж собой)", gen: 0, desc: "Апалы-сіңлілі әйелдердің күйеулері бір-біріне бажа." },
+      { term: "Келін", tr: "kelin", gloss: "невестка", gen: -1, desc: "Ұлыңның не інің әйелі — үйге түскен келін." },
+      { term: "Күйеу бала", tr: "kúieu bala", gloss: "зять", gen: -1, desc: "Қызыңның күйеуі." }
+    ]
+  },
+  {
+    id: "quda",
+    title: "Құда-жекжат",
+    tag: "Жекжат",
+    dir: "сватья",
+    note: "Қыз алысып-беріскен екі әулет бір-біріне құда болады.",
+    terms: [
+      { term: "Құда", tr: "quda", gloss: "сват", gen: 0, desc: "Балаларың үйленген соң екінші жақтың ер туыстары." },
+      { term: "Құдағи", tr: "qudagi", gloss: "сватья", gen: 0, desc: "Құда жақтың әйел туыстары." },
+      { term: "Құда бала", tr: "quda bala", gloss: "молодой сват", gen: -1, desc: "Құда жақтың жас жігіті." },
+      { term: "Құдаша", tr: "qudasha", gloss: "своячница (девушка)", gen: -1, desc: "Құда жақтың бойжеткен қызы." },
+      { term: "Жекжат", tr: "jekjat", gloss: "свойственники", gen: 0, desc: "Неке арқылы жалғасқан жалпы туыстық." }
+    ]
+  }
+];
+
+/* ------------------------------------------------------------------ *
+ *  Render
+ * ------------------------------------------------------------------ */
+const tree = document.getElementById('tree');
+const metaRow = document.getElementById('metaRow');
+const empty = document.getElementById('empty');
+
+let totalTerms = 0;
+BRANCHES.forEach(b => totalTerms += b.terms.length);
+
+metaRow.innerHTML =
+  `<span class="chip">🌳 ${BRANCHES.length} тармақ</span>` +
+  `<span class="chip">📇 ${totalTerms} атау</span>` +
+  `<span class="chip">↑ Жеті ата</span>` +
+  `<span class="chip">↓ Жеті ұрпақ</span>`;
+
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+
+BRANCHES.forEach(b => {
+  const sec = el('section', 'branch');
+  sec.dataset.id = b.id;
+
+  const head = el('div', 'branch-head');
+  head.appendChild(el('h2', null, `<span class="branch-tag">${b.tag}</span>${b.title}`));
+  head.appendChild(el('span', 'dir', b.dir));
+  sec.appendChild(head);
+
+  if (b.note) sec.appendChild(el('p', 'branch-note' + (b.warn ? ' warn' : ''), b.note));
+
+  const cards = el('div', 'cards');
+  b.terms.forEach(t => {
+    const card = el('div', 'card');
+    const genTxt = t.gen > 0 ? t.gen : (t.gen < 0 ? t.gen : '•');
+    card.innerHTML =
+      `<div class="gen-badge" title="буын / поколение">${genTxt}</div>` +
+      `<div class="term">${t.term}</div>` +
+      `<div class="translit">${t.tr}</div>` +
+      `<div class="gloss">${t.gloss}</div>` +
+      `<div class="desc">${t.desc}</div>`;
+    card._search = (t.term + ' ' + t.tr + ' ' + t.gloss + ' ' + t.desc).toLowerCase();
+    card.addEventListener('click', () => card.classList.toggle('open'));
+    cards.appendChild(card);
+  });
+  sec.appendChild(cards);
+  tree.appendChild(sec);
+});
+
+/* ------------------------------------------------------------------ *
+ *  Search
+ * ------------------------------------------------------------------ */
+const search = document.getElementById('search');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let anyVisible = false;
+  document.querySelectorAll('section.branch').forEach(sec => {
+    let secVisible = false;
+    sec.querySelectorAll('.card').forEach(card => {
+      const match = !q || card._search.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) secVisible = true;
+    });
+    sec.style.display = secVisible ? '' : 'none';
+    if (secVisible) anyVisible = true;
+  });
+  empty.classList.toggle('show', !anyVisible);
+});
+
+/* ------------------------------------------------------------------ *
+ *  Theme toggle
+ * ------------------------------------------------------------------ */
+const themeBtn = document.getElementById('themeBtn');
+function applyTheme(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  themeBtn.textContent = mode === 'dark' ? '☀️ Жарық режим' : '🌙 Қараңғы режим';
+}
+let saved = null;
+try { saved = localStorage.getItem('kk-tree-theme'); } catch (e) {}
+if (!saved) saved = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+applyTheme(saved);
+themeBtn.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  try { localStorage.setItem('kk-tree-theme', next); } catch (e) {}
+});
+</script>
+</body>
+</html>
